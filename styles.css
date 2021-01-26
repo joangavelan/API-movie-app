@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* colors */
+    --color-primary: #0466C8;
+    --color-secondary: #040e18;
+    --color-secondary-light: #051020;
+    --color-tertiary: #979DAC;
+    --color-gray-light: #c2c2c2;
+    /* font */
+    --main-font-stack: Roboto, Helvetica, Arial, sans-serif;   
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--main-font-stack);
+    color: var(--color-gray-light);
+    line-height: 1.5;
+}
+
+/* APP CONTAINER */
+.app {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    flex: 1;
+    background-color: var(--color-secondary);
+}
+
+/* LOGO */
+.logo {
+    font-size: 3rem;
+    color: white;
+    padding: 3rem 5rem;
+    font-weight: 500;
+    line-height: initial;
+    border-bottom: 1px solid #9995956c; 
+}
+
+.logo span {
+    color: var(--color-primary);
+}
+
+/* CATEGORIES */
+.categories {
+    list-style-type: none;
+    padding: 3rem 5rem;
+}
+
+.categories li:not(:last-child) {
+    margin-bottom: 3rem;
+}
+
+.categories li a {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--color-gray-light);
+}
+
+.categories li a:hover {
+    color: var(--color-primary);
+}
+
+/* HEADER */
+.header {
+    padding: 3rem;
+    overflow: hidden;
+}
+
+/* SEARCH */
+.search-wrapper {
+    width: max-content;
+    margin-left: auto;
+    margin-right: 2.5rem;
+    position: relative;
+}
+
+#search {
+    font-size: 1.5rem;
+    background-color: #050c14;
+    outline: none;
+    border: none;
+    padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+    color: var(--color-gray-light);
+    border-radius: 2px;
+}
+
+#search::placeholder {
+    color: #626b79;
+}
+
+.search-wrapper i {
+    font-size: 1.3rem;
+    position: absolute;
+    top: 13.5px;
+    left: 12px;
+    color: var(--color-primary);
+}
+
+/* MAIN */
+.main {
+    flex: 5;
+    background-color: var(--color-secondary-light);
+}
+
+/* MOVIES */
+.movies {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: top;
+    padding: 3rem;
+}
+
+/* MOVIE */
+.movie {
+    width: calc(25% - 4rem);
+    margin: 0 2rem 4rem;
+    overflow: hidden;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.movie img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movie p {
+    font-size: 2rem;
+    padding-top: 1.2rem;
+}
