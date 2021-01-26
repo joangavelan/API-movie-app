@@ -23,6 +23,7 @@ const getMovies = async () => {
         }
         movies.push(obj);
     });
+    console.log(movies)
     return movies;
 }
 
