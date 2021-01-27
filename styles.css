@@ -3,7 +3,7 @@
 :root {
     /* colors */
     --color-primary: #0466C8;
-    --color-secondary: #040e18;
+    --color-secondary: #000b18;
     --color-secondary-light: #051020;
     --color-tertiary: #979DAC;
     --color-gray-light: #c9c9c9;
@@ -55,7 +55,7 @@ body {
 /* categories */
 .categories {
     list-style-type: none;
-    padding: 3rem 5rem;
+    padding: 2.5rem 5rem;
 }
 
 .categories li:not(:last-child) {
@@ -74,15 +74,14 @@ body {
 
 /* header */
 .header {
-    padding: 3rem;
     overflow: hidden;
+    padding: 2.55rem;
 }
 
 /* search */
 .search-wrapper {
     width: max-content;
-    margin-left: auto;
-    margin-right: 2.5rem;
+    margin-left: 1.2rem;
     position: relative;
 }
 
@@ -91,7 +90,8 @@ body {
     background-color: #050c14;
     outline: none;
     border: none;
-    padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+    padding: 1.5rem;
+    padding-left: 4rem;
     color: var(--color-gray-light);
     border-radius: 3px;
 }
@@ -103,8 +103,8 @@ body {
 .search-wrapper i {
     font-size: 1.3rem;
     position: absolute;
-    top: 13.5px;
-    left: 12px;
+    top: 16.5px;
+    left: 14px;
     color: var(--color-primary);
 }
 
@@ -120,13 +120,13 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: top;
-    padding: 3rem;
+    padding: 2.5rem 2rem;
 }
 
 /* movie */
 .movie {
     width: calc(25% - 4rem);
-    margin: 0 2rem 4rem;
+    margin: 0 2rem 5rem;
     overflow: hidden;
     border-radius: 2px;
     overflow: hidden;
