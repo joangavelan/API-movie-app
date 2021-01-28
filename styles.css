@@ -145,10 +145,14 @@ body {
     cursor: pointer;
 }
 
+/* .movie:hover .movie-image {
+    height: 30rem;
+} */
+
 .movie-image {
     display: block;
     width: 100%;
-    height: 41rem;
+    height: auto;
     object-fit: cover;
     object-position: center;
 }
