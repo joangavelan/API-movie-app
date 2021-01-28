@@ -30,6 +30,7 @@ body {
 /* app container */
 .app {
     display: flex;
+    min-height: 100vh;
 }
 
 /* sidebar */
@@ -59,7 +60,7 @@ body {
 }
 
 .categories li:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .categories li a {
@@ -130,6 +131,7 @@ body {
     overflow: hidden;
     border-radius: 2px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .movie-image {
@@ -164,13 +166,15 @@ body {
     position: relative;
     display: flex;
     width: 70rem;
-    height: 50rem;
+    min-height: 45rem;
+    height: auto;
     background-color: var(--color-secondary);
     padding: 3rem;
 }
 
 .modal-image {
-    height: 100%;
+    max-width: 30rem;
+    height: auto;
 }
 
 .modal-content {
@@ -178,15 +182,45 @@ body {
     margin-left: 1.5rem;
 }
 
-.overview h3 {
+/* overview */
+.overview {
+    max-height: 28rem;
+    overflow-y: auto;
+    padding-right: 3rem;
+}
+
+.overview::-webkit-scrollbar {
+    width: 1.2rem;
+}
+  
+.overview::-webkit-scrollbar-track {
+    background: var(--color-secondary-light);    
+    border-radius: 2rem;      
+}
+
+.overview::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);    /* color of the scroll thumb */
+    border-radius: 2rem;       /* roundness of the scroll thumb */
+}
+
+.overview-wrapper h3 {
     font-size: 2.7rem;
     letter-spacing: 1px;
     margin-bottom: 1rem;
 }
 
-.overview p {
+.overview-wrapper p {
     font-size: 1.7rem;
     line-height: 1.75;
+}
+
+.close-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--color-tertiary);
 }
 
 /* meta data */
@@ -214,14 +248,4 @@ body {
     font-size: 1.6rem;
     color: var(--color-tertiary);
     text-transform: capitalize;
-}
-
-/* close modal */
-.close-modal {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 1.3rem;
-    cursor: pointer;
-    color: var(--color-tertiary);
 }
