@@ -145,10 +145,6 @@ body {
     cursor: pointer;
 }
 
-/* .movie:hover .movie-image {
-    height: 30rem;
-} */
-
 .movie-image {
     display: block;
     width: 100%;
@@ -250,8 +246,8 @@ body {
 }
 
 .overview::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);    /* color of the scroll thumb */
-    border-radius: 2rem;       /* roundness of the scroll thumb */
+    background-color: var(--color-primary);
+    border-radius: 2rem;
 }
 
 .overview-wrapper h3 {
