@@ -4,11 +4,10 @@ const App = (() => {
     const searchEl = document.querySelector('#search');
     const modalEl = document.querySelector('.modal');
     const categoriesEl = document.querySelector('.categories');
+    const loadingBars = document.querySelector('.loading-bars');
     //API
     const API_KEY = '659755775c442c8c41820f55809c3842';
     const MOVIE_ENDPOINT = 'https://api.themoviedb.org'
-    //query
-    let searchQuery = '';
 
     //helper functions
     const getYear = (fullDate) => new Date(fullDate).getFullYear();
@@ -37,6 +36,8 @@ const App = (() => {
         const MOVIE_URL = `${MOVIE_ENDPOINT}/3/movie/${ID}?api_key=${API_KEY}`;
         const response = await fetch(MOVIE_URL);
         const movie = await response.json();
+        console.log(response)
+
         //storing wanted data
         const imagePath = `https://image.tmdb.org/t/p/w400/${movie.poster_path}`;
         const movieObj = {
@@ -47,7 +48,7 @@ const App = (() => {
             review: movie.vote_average
         }
         //showing data
-        openModal(movieObj);
+        modal(movieObj);
     }
 
     const getGenres = async () => {
@@ -120,8 +121,7 @@ const App = (() => {
         setValue(categoriesEl, markup);
     }
 
-    const openModal = (movieObj) => {
-        modalEl.classList.add('show');
+    const modal = (movieObj) => {
         //cache the DOM
         const poster = document.querySelector('.poster');
         const overview = document.querySelector('.overview');
@@ -131,17 +131,24 @@ const App = (() => {
         poster.src = movieObj.image;
         setValue(overview, movieObj.overview);
         setValue(review, movieObj.review);
-        setValue(release, movieObj.release)
+        setValue(release, movieObj.release);
+        //loading bars removed 1.7s after the response
+        setTimeout(() => {
+            loadingBars.classList.remove('show');
+        }, 1100);
+    }
+
+    const loadModal = () => {
+        modalEl.classList.add('show');
+        loadingBars.classList.add('show');
     }
 
     const init = () => {
         getGenres();
         getTrendingMovies();
-    } 
+    }
 
     const listeners = () => {
-        document.addEventListener('DOMContentLoaded', init);
-
         categoriesEl.addEventListener('click', event => {
             if(event.target.matches('.category')) {
                 const genre_id = event.target.dataset.id;
@@ -151,7 +158,7 @@ const App = (() => {
     
         searchEl.addEventListener('keypress', event => {
             if(event.keyCode === 13) {
-                searchQuery = searchEl.value;
+                const searchQuery = searchEl.value;
                 getMovies(searchQuery);
                 searchEl.value = '';
             }
@@ -161,6 +168,7 @@ const App = (() => {
             if(event.target.matches('.movie-image') || event.target.matches('.movie-title')) {
                 const movieItem = event.target.parentElement;
                 const movie_id = movieItem.dataset.id;
+                loadModal();
                 getMovieData(movie_id);
             }
         })
@@ -174,9 +182,11 @@ const App = (() => {
     }
 
     return {
+        init,
         listeners
     }
     
 })();
 
+App.init();
 App.listeners();
