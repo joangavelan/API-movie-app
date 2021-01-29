@@ -46,6 +46,7 @@ body {
     padding: 3rem 5rem;
     font-weight: 500;
     line-height: initial;
+    cursor: pointer;
 }
 
 .logo span {

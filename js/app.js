@@ -36,19 +36,19 @@ const App = (() => {
         //fetching movie
         const MOVIE_URL = `${MOVIE_ENDPOINT}/3/movie/${ID}?api_key=${API_KEY}`;
         const response = await fetch(MOVIE_URL);
-        const movie = await response.json();
+        const movieObj = await response.json();
 
         //storing wanted data
-        const imagePath = `https://image.tmdb.org/t/p/w400/${movie.poster_path}`;
-        const movieObj = {
-            title: movie.title,
+        const imagePath = `https://image.tmdb.org/t/p/w400/${movieObj.poster_path}`;
+        const movie = {
+            title: movieObj.title,
             image: imagePath,
-            overview: movie.overview,
-            release: getYear(movie.release_date),
-            review: movie.vote_average
+            overview: movieObj.overview,
+            release: getYear(movieObj.release_date),
+            review: movieObj.vote_average
         }
         //showing data
-        Modal.set(movieObj);
+        Modal.set(movie);
     }
 
     const getGenres = async () => {
@@ -95,6 +95,7 @@ const App = (() => {
         renderMovies(movies);
     }
 
+    //render functions
     const renderMovies = (movies) => {
         let markup = '';
         movies.forEach(movie => {
@@ -152,9 +153,14 @@ const App = (() => {
         })
     
         window.addEventListener('click', event => {
+            //close modal
             const closeModal = document.querySelector('.close-icon');
             if(event.target === modalEl || event.target === closeModal) {
                 modalEl.classList.remove('show');
+            }
+            //logo action
+            if(event.target.matches('.logo') || event.target.matches('.logo-span')) {
+                getTrendingMovies();
             }
         })
     }
